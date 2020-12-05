@@ -29,7 +29,7 @@ public class ContactsEditor extends VerticalLayout implements KeyNotifier {
 	TextField firstName = new TextField("First Name");
 	TextField lastName = new TextField("Last Name");
 	TextField mobile = new TextField("Mobile");
-	TextField email = new TextField("Email");
+	TextField emailId = new TextField("Email");
 	Checkbox status = new Checkbox(true);
 
 	
@@ -46,7 +46,7 @@ public class ContactsEditor extends VerticalLayout implements KeyNotifier {
 	public ContactsEditor(ContactsRepository repository) {
 		this.contactRepository = repository;
 
-		add(firstName, lastName,mobile,email,status, actions);
+		add(emailId,firstName, lastName,mobile,status, actions);
 
 		// bind using naming convention
 		binder.bindInstanceFields(this);
@@ -96,7 +96,7 @@ public class ContactsEditor extends VerticalLayout implements KeyNotifier {
 		}
 		cancel.setVisible(persisted);
 
-		// Bind customer properties to similarly named fields
+		// Bind contact properties to similarly named fields
 		// Could also use annotation or "manual binding" or programmatically
 		// moving values from fields to entities before saving
 		binder.setBean(contact);
@@ -104,7 +104,7 @@ public class ContactsEditor extends VerticalLayout implements KeyNotifier {
 		setVisible(true);
 
 		// Focus first name initially
-		firstName.focus();
+		emailId.focus();
 	}
 	
 	public void setChangeHandler(ChangeHandler h) {

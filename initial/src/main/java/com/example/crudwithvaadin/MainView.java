@@ -18,70 +18,7 @@ import com.vaadin.flow.router.Route;
  */
 @Route
 public class MainView extends VerticalLayout {
-	/*
-	private final CustomerRepository repo;
-	final Grid<Customer> grid;
-	private final CustomerEditor editor;
-	final TextField filter;
-	private final Button addNewBtn;
 
-	
-	
-	public MainView(CustomerRepository repo,CustomerEditor editor) {
-		this.repo = repo;
-		this.editor = editor;
-		this.grid = new Grid<>(Customer.class);
-		this.filter = new TextField();
-		this.addNewBtn = new Button("New customer", VaadinIcon.PLUS.create());
-		
-		
-		
-		add(new Button("Click me", e -> Notification.show("Hello, Spring+Vaadin user!")));// build layout
-		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
-		add(actions, grid, editor);
-
-		grid.setHeight("300px");
-		grid.setColumns("id", "firstName", "lastName");
-		grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
-
-		filter.setPlaceholder("Filter by last name");
-
-		// Hook logic to components
-
-		// Replace listing with filtered content when user changes filter
-		filter.setValueChangeMode(ValueChangeMode.EAGER);
-		filter.addValueChangeListener(e -> listCustomers(e.getValue()));
-
-		// Connect selected Customer to editor or hide if none is selected
-		grid.asSingleSelect().addValueChangeListener(e -> {
-			editor.editCustomer(e.getValue());
-		});
-
-		// Instantiate and edit new Customer the new button is clicked
-		addNewBtn.addClickListener(e -> editor.editCustomer(new Customer("", "")));
-
-		// Listen changes made by the editor, refresh data from backend
-		editor.setChangeHandler(() -> {
-			editor.setVisible(false);
-			listCustomers(filter.getValue());
-		});
-
-		// Initialize listing
-		listCustomers(null);
-	}
-
-	// tag::listCustomers[]
-	void listCustomers(String filterText) {
-		if (StringUtils.isEmpty(filterText)) {
-			grid.setItems(repo.findAll());
-		}
-		else {
-			grid.setItems(repo.findByLastNameStartsWithIgnoreCase(filterText));
-		}
-	}
-	// end::listCustomers[]
-	*/
-	
 	private final ContactsRepository repo;
 	final Grid<Contact> grid;
 	private final ContactsEditor editor;
@@ -113,7 +50,7 @@ public class MainView extends VerticalLayout {
 
 		// Replace listing with filtered content when user changes filter
 		filter.setValueChangeMode(ValueChangeMode.EAGER);
-		filter.addValueChangeListener(e -> listCustomers(e.getValue()));
+		filter.addValueChangeListener(e -> listContacts(e.getValue()));
 
 		// Connect selected Customer to editor or hide if none is selected
 		grid.asSingleSelect().addValueChangeListener(e -> {
@@ -126,15 +63,15 @@ public class MainView extends VerticalLayout {
 		// Listen changes made by the editor, refresh data from backend
 		editor.setChangeHandler(() -> {
 			editor.setVisible(false);
-			listCustomers(filter.getValue());
+			listContacts(filter.getValue());
 		});
 
 		// Initialize listing
-		listCustomers(null);
+		listContacts(null);
 	}
 
 	// tag::listCustomers[]
-	void listCustomers(String filterText) {
+	void listContacts(String filterText) {
 		if (StringUtils.isEmpty(filterText)) {
 			grid.setItems(repo.findAll());
 		}
