@@ -1,5 +1,7 @@
 package com.example.crudwithvaadin;
 
+import java.util.HashSet;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -82,4 +84,5 @@ public class Contact {
 	{
 		
 	}
+	HashSet<E>
 }
